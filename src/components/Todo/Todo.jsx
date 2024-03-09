@@ -1,9 +1,9 @@
 import { useState } from "react"
-
 function Todo({todoData,isFinished,changeFinished,onDelete,onEdit}){
     const[finished,setFinised]=useState(isFinished)
-    const[Isediting,setIsEditing]=useState(false) //initally not editing
+    const[Isediting,setIsEditing]=useState(false) //initally not editing    
     const[editTet,setEditText]=useState(todoData)
+    // finished=true;
     return(
         <>
             <input type="checkbox" checked={finished} onChange={(e)=>{
@@ -15,6 +15,7 @@ function Todo({todoData,isFinished,changeFinished,onDelete,onEdit}){
                 setIsEditing(!Isediting)
                 onEdit(editTet)
             }}>{(!Isediting) ? 'Edit' : 'Save'}</button>
+            {/* <br/> */}
             <button onClick={onDelete}>Delete</button>
             <br/>
         </>
