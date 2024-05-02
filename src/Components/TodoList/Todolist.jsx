@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Todo from "../Todo/Todo"
-
-function TodoList({list,updateList}){
-   
+import TodoContext from "../../Context/TodoContext"
+function TodoList(){
+    const {list,setList}=useContext(TodoContext)
     return(
         <div>
                 {list.length>0 &&
@@ -18,7 +18,20 @@ function TodoList({list,updateList}){
                                     }
                                     return t
                                 })
-                                updateList(upadatedList)
+                                setList(upadatedList)
+                            }}
+                            onDelete={()=>{
+                                const upadatedList= list.filter(t=>t.id != todo.id)
+                                setList(upadatedList)
+                            }}
+                            onEdit={(todoText)=>{
+                                const upadatedList= list.map((t)=>{
+                                    if(t.id==todo.id)   {
+                                        todo.todoData=todoText
+                                    }
+                                    return t
+                                })
+                                setList(upadatedList)
                             }}
                         />)}
         </div>
