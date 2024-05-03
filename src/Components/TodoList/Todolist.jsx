@@ -1,33 +1,20 @@
 import { useContext, useState } from "react"
 import Todo from "../Todo/Todo"
 import TodoContext from "../../Context/TodoContext"
+import ToDodispatchContext from "../../Context/ToDodispatchContext"
 function TodoList(){
-    const {list,setList}=useContext(TodoContext)
+    const {list}=useContext(TodoContext)
+    const {dispatch}=useContext(ToDodispatchContext)
 
     function onFinished(isFinished,todo){
-        const upadatedList= list.map((t)=>{
-            if(t.id==todo.id)   {
-                todo.finished=isFinished
-            }
-            return t
-        })
-        setList(upadatedList)
+        dispatch({type:'on_Finished',payload:{todo,isFinished:isFinished}})
     }
     function onDelete(todo){
-        const upadatedList= list.filter(t=>t.id != todo.id)
-        setList(upadatedList)
+        dispatch({type:'delete_todo',payload:{todo}})
     }
 
     function onEdit(todo,todoText){
-       
-            const upadatedList= list.map((t)=>{
-                if(t.id==todo.id)   {
-                    todo.todoData=todoText
-                }
-                return t
-            })
-            setList(upadatedList)
-        
+        dispatch({type:'edit_todo',payload:{todo,todoText}})
     }
     return(
         <div>
