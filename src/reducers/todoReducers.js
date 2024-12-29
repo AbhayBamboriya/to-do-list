@@ -1,4 +1,4 @@
-function toDoReducers(state,action){
+function toDoReducers(state=[],action){
     if(action.type == 'add_todo'){
         let todoText=action.payload.todoText
         return [

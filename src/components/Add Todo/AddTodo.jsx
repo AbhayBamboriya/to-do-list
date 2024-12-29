@@ -1,9 +1,10 @@
 import { useContext, useState } from "react"
-import ToDoDispatch from "../../context/ToDoDispatch"
+import { useDispatch } from "react-redux"
+// import { addtodo } from "../../actions/todoaction"
 
-function AddTodo(){
+function AddTodo({addTodo}){
+    const dispatch=useDispatch()
     const [inputText,setInputText]=useState('')
-    const {dispatch}=useContext(ToDoDispatch)
     return(
         <div>
             <input
@@ -14,7 +15,7 @@ function AddTodo(){
             />
             <button onClick={()=>{
                 // updateList(inputText)
-                dispatch({type:'add_todo',payload:{todoText:inputText}})
+                addTodo(inputText)
                 setInputText('');       //making the input field empty
                 }}>Add</button>
         </div>
