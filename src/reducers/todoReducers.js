@@ -36,5 +36,31 @@ function toDoReducers(state,action){
         return state
     }
 
+
+    createSlice({
+        name:'todo',
+        // initialState,
+        reducers:{},
+        extraReducers:(builder)=>{
+            // if login in successfull then what to ds
+            builder
+            .addCase(login.fulfilled,(state,action)=>{
+                // setting the data in the form of string 
+                // we have stored in local storage because
+                // statte will be fetched from local storage
+                // current state will not be accessed from the local storage thatswhy we have saved in the state
+                localStorage.setItem("data",JSON.stringify(action?.payload?.user))
+                localStorage.setItem("isLoggedIn",true)
+                localStorage.setItem("role",action?.payload?.user?.role)
+                state.isLoggedIn=true
+                state.data=action?.payload?.user
+                state.role=action?.payload?.user?.role
+            })
+            
+        }
+    })
+
+
 }
+
 export default toDoReducers
