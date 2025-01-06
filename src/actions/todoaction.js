@@ -4,6 +4,7 @@ export const todofinished=(todo,isFinished)=>(
     {type:FINISH_TODO,payload:{todo,isFinished:isFinished}}
 )
 export const addTodo=(inputText)=>(
+    // if(inputText==" ") return;
     {type:ADD_TODO,payload:{todoText:inputText}}
 )
 

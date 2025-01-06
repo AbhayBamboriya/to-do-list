@@ -9,10 +9,11 @@ function App() {
   const action=bindActionCreators({addTodo,deleteTodo,editTodo,todofinished},dispatch)
   return ( 
 
-    <>
+    <div className='h-screen flex flex-col bg-gray-800 items-center'>
+        <h1 className='text-6xl text-center pt-[30px] italic text-lime-500'>To-Do-List</h1>
         <AddTodo addTodo={action.addTodo}/>
         <TodoList deleteTodo={action.deleteTodo} editTodo={action.editTodo} todofinished={action.todofinished}/>
-    </>
+    </div>
   )
 }
 
