@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 function Todo({todoData,isFinished,changeFinished,onDelete,onEdit}){
     const[finished,setFinised]=useState(isFinished)
     const[Isediting,setIsEditing]=useState(false) //initally not editing    
@@ -12,6 +12,14 @@ function Todo({todoData,isFinished,changeFinished,onDelete,onEdit}){
         }
         onEdit(editTet)
     }
+    useEffect(()=>{
+            if(editTet!=""){
+                setShow(false)
+                console.log('called',show);
+                
+            }
+    
+        },[editTet])
     return(
         <div className="flex flex-col items-center gap-[10px] p-[10px]">
             <div className="flex gap-[7%]"> 

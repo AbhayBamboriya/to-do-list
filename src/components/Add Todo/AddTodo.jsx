@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 // import { addtodo } from "../../actions/todoaction"
 
@@ -16,6 +16,14 @@ function AddTodo({addTodo}){
         }
         addTodo(text)
     }
+    useEffect(()=>{
+        if(inputText!=""){
+            setShow(false)
+            console.log('called',show);
+            
+        }
+
+    },[inputText])
 
     return(
             <div className="h-[40%] flex flex-col items-center justify-center gap-[10px]">
