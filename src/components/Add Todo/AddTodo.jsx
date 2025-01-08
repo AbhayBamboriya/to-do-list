@@ -14,7 +14,7 @@ function AddTodo({addTodo}){
         else{
             setShow(false)    
         }
-        addTodo(text)
+        addTodo({todoText:text})
     }
     useEffect(()=>{
         if(inputText!=""){

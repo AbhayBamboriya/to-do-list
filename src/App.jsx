@@ -3,7 +3,8 @@ import './App.css'
 import AddTodo from './components/Add Todo/AddTodo'
 import TodoList from './components/ToDoList/ToDoList'
 import { bindActionCreators } from 'redux'
-import { addTodo,deleteTodo,editTodo,todofinished } from './actions/todoaction'
+// import { addTodo,deleteTodo,editTodo,todofinished } from './actions/todoaction'
+import {addTodo,editTodo,deleteTodo,todofinished} from "./Slices/todoSlices"
 function App() {
   const dispatch=useDispatch()
   const action=bindActionCreators({addTodo,deleteTodo,editTodo,todofinished},dispatch)
