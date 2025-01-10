@@ -39,9 +39,20 @@ const todoslice=createSlice({
         todofinished:(state,action)=>{
             let todo=action.payload.todo
             let isFinished=action.payload.isFinished
+            console.log("finished",isFinished);
+            
             state.todoList=state.todoList.map((t)=>{
                 if(t.id==todo.id){
-                    todo.finished=isFinished      //by default set
+                    console.log(
+                        "l",todo.finished
+                    );
+                    
+                    t.finished=isFinished    //by default set\
+                    console.log(
+                        "lss",todo.finished
+                    );
+                    console.log('checksdsndnss');
+                    
                 }
                 return t
             })
