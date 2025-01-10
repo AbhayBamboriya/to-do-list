@@ -15,7 +15,14 @@ const todoslice=createSlice({
             console.log('local',localStorage);
             
             localStorage.setItem('state',JSON.stringify(state.todoList))
-            console.log('local',localStorage.getItem("state"));
+            // console.log('local',localStorage.getItem("state"));
+            console.log(process.env.NODE_ENV);
+            
+            if (process.env.NODE_ENV === "development") {
+                localStorage.setItem("state", JSON.stringify(state.todoList)); // Works on localhost
+              } else {
+                console.log("Not storing in production!"); // Deployed on Netlify
+              }
         },
         editTodo:(state,action)=>{
             let todo=action.payload.todo
