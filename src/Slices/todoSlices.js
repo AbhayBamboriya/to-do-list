@@ -12,9 +12,10 @@ const todoslice=createSlice({
             state.todoList.push({id:state.todoList.length+1,todoData:todoText,finished:false})
             let s=localStorage.getItem('state')
             // console.log('test',JSON.stringify(s));
-            console.log('local',s);
+            console.log('local',localStorage);
             
             localStorage.setItem('state',JSON.stringify(state.todoList))
+            console.log('local',localStorage.getItem("state"));
         },
         editTodo:(state,action)=>{
             let todo=action.payload.todo
@@ -26,6 +27,7 @@ const todoslice=createSlice({
                 return t
             })
             localStorage.setItem('state',JSON.stringify(state.todoList))
+            console.log('local',localStorage.getItem("state"));
         },
         todofinished:(state,action)=>{
             let todo=action.payload.todo
@@ -37,11 +39,13 @@ const todoslice=createSlice({
                 return t
             })
             localStorage.setItem('state',JSON.stringify(state.todoList))
+            console.log('local',localStorage.getItem("state"));
         },
         deleteTodo:(state,action)=>{
             let todo=action.payload.todo
             state.todoList=state.todoList.filter(t=>t.id!=todo.id)
             localStorage.setItem('state',JSON.stringify(state.todoList))
+            console.log('local',localStorage.getItem("state"));
         }
         
     }
